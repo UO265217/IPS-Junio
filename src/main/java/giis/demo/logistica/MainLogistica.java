@@ -1,6 +1,9 @@
 package giis.demo.logistica;
 
+import giis.demo.logistica.view.MainView;
 import giis.demo.util.Database;
+
+import javax.swing.*;
 
 public class MainLogistica {
 
@@ -11,6 +14,15 @@ public class MainLogistica {
         db.loadDatabase();
 
         System.out.println("Base de datos creada");
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame frame = new MainView();
+
+                frame.setVisible(true);
+            }
+        });
+
     }
 
 }
