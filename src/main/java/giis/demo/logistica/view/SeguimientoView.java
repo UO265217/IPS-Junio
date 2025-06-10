@@ -20,7 +20,7 @@ public class SeguimientoView extends JFrame {
     private LogisticaModel model;
 
     public SeguimientoView() {
-        this.model = new LogisticaModel();
+        this.model = LogisticaModel.getInstance();
         setTitle("Consultar Seguimiento de Envío");
         setSize(600, 450);
         setLocationRelativeTo(null);
@@ -30,7 +30,7 @@ public class SeguimientoView extends JFrame {
     }
 
     private void initComponents() {
-        // ... (sin cambios respecto a la versión anterior de initComponents) ...
+
         JPanel panelEntrada = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelEntrada.add(new JLabel("Número de Seguimiento:"));
         txtNumeroSeguimiento = new JTextField(20);
@@ -48,7 +48,6 @@ public class SeguimientoView extends JFrame {
     }
 
     private void addListeners() {
-        // ... (sin cambios respecto a la versión anterior de addListeners) ...
         btnRastrear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,23 +74,23 @@ public class SeguimientoView extends JFrame {
             } else {
                 StringBuilder sb = new StringBuilder();
                 sb.append("--- Información del Envío ---\n");
-                // Usamos los getters del DTO
+
                 sb.append(String.format("Nº Seguimiento: %s\n", envio.getNumero_seguimiento()));
                 sb.append(String.format("Origen:         %s\n", envio.getOrigen()));
                 sb.append(String.format("Destino:        %s\n", envio.getDestino()));
                 sb.append(String.format("Estado Actual:  %s\n", envio.getEstado_actual()));
 
                 sb.append("\n--- Historial de Eventos ---\n");
-                // El ID del envío ya está en el objeto EnvioDTO
+
                 List<HistorialEnviosDTO> historial = model.getHistorialEnvio(envio.getId()); // Ahora devuelve List<HistorialEnviosDTO>
 
                 if (historial.isEmpty()) {
                     sb.append("No hay eventos de historial registrados para este envío.\n");
                 } else {
-                    for (HistorialEnviosDTO evento : historial) { // Iteramos sobre HistorialEnviosDTO
+                    for (HistorialEnviosDTO evento : historial) {
                         sb.append(String.format("%s - %s\n",
-                                evento.getFecha_hora(),       // Usamos getters del DTO
-                                evento.getDescripcion_evento())); // Usamos getters del DTO
+                                evento.getFecha_hora(),
+                                evento.getDescripcion_evento()));
                     }
                 }
                 textAreaResultados.setText(sb.toString());

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class MainView extends JFrame {
 
     private JButton btnAbrirSeguimiento;
+    private JButton btnNuevaSolicitud;
 
     public MainView() {
 
@@ -29,6 +30,17 @@ public class MainView extends JFrame {
             }
         });
         add(btnAbrirSeguimiento);
+
+        btnNuevaSolicitud = new JButton("Nueva Solicitud");
+        btnNuevaSolicitud.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SolicitudEnvioView solicitudEnvioView = new SolicitudEnvioView();
+                solicitudEnvioView.setVisible(true);
+            }
+        });
+        add(btnNuevaSolicitud);
     }
 
 }
