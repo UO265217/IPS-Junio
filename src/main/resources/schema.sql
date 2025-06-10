@@ -18,10 +18,10 @@ create table Envios (
 
 create table HistorialEnvios (
     id int primary key not null,
-    envio_id int not null,
+    id_envio int not null,
 
     fecha_hora text not null,
     descripcion_evento varchar(255) not null,
 
-    foreign key (envio_id) references Envios(id)
+    foreign key (id_envio) references Envios(id)
 );

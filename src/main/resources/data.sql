@@ -15,7 +15,7 @@ insert into Envios (id, numero_seguimiento, origen, destino, estado_actual) valu
     (2, 1002, "Oviedo", "Madrid", "EN_REPARTO"),
     (3, 1003, "Barcelona", "Valencia", "ENTREGADO");
 
-insert into HistorialEnvios (id, envio_id, fecha_hora, descripcion_evento) values
+insert into HistorialEnvios (id, id_envio, fecha_hora, descripcion_evento) values
     (1, 1, '2024-07-28 09:00:00', 'Solicitud de envío creada'),
     (2, 1, '2024-07-28 14:30:00', 'Paquete recogido en origen'),
     (3, 1, '2024-07-28 18:00:00', 'Llegada al almacén de Madrid'),
